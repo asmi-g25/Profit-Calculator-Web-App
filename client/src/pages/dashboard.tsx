@@ -9,6 +9,7 @@ import EstimatesHistory from "@/components/estimates-history";
 import Reports from "@/components/reports";
 import AdvancedAnalytics from "@/components/advanced-analytics";
 import CostOptimizer from "@/components/cost-optimizer";
+import BusinessIntelligence from "@/components/business-intelligence";
 import { useQuery } from "@tanstack/react-query";
 import type { Estimate } from "@shared/schema";
 
@@ -163,6 +164,12 @@ export default function Dashboard() {
                 >
                   Cost Optimizer
                 </TabsTrigger>
+                <TabsTrigger 
+                  value="intelligence" 
+                  className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:bg-transparent rounded-none px-6 py-4"
+                >
+                  Business Intelligence
+                </TabsTrigger>
               </TabsList>
             </div>
 
@@ -211,6 +218,10 @@ export default function Dashboard() {
                   console.log('Optimization recommendations:', recommendations);
                 }}
               />
+            </TabsContent>
+
+            <TabsContent value="intelligence" className="p-6">
+              <BusinessIntelligence userRole={userRole} />
             </TabsContent>
           </Tabs>
         </Card>

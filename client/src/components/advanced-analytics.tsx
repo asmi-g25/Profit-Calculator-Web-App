@@ -124,7 +124,7 @@ export default function AdvancedAnalytics({ userRole }: AdvancedAnalyticsProps) 
 
     return Array.from(destinationStats.values()).map(stat => ({
       ...stat,
-      averageMargin: stat.margins.reduce((sum, margin) => sum + margin, 0) / stat.margins.length,
+      averageMargin: stat.margins.reduce((sum: number, margin: number) => sum + margin, 0) / stat.margins.length,
       averageOrderValue: stat.totalRevenue / stat.estimateCount,
     })).sort((a, b) => b.totalRevenue - a.totalRevenue);
   };
