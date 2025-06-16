@@ -52,6 +52,7 @@ export class MemStorage implements IStorage {
       destinationTransport: insertEstimate.destinationTransport || "0",
       distributorMargin: insertEstimate.distributorMargin || "12",
       retailerMargin: insertEstimate.retailerMargin || "20",
+      calculationResults: insertEstimate.calculationResults || null,
     };
     this.estimates.set(id, estimate);
     return estimate;

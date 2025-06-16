@@ -7,6 +7,8 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import CreateEstimateForm from "@/components/create-estimate-form";
 import EstimatesHistory from "@/components/estimates-history";
 import Reports from "@/components/reports";
+import AdvancedAnalytics from "@/components/advanced-analytics";
+import CostOptimizer from "@/components/cost-optimizer";
 import { useQuery } from "@tanstack/react-query";
 import type { Estimate } from "@shared/schema";
 
@@ -149,6 +151,18 @@ export default function Dashboard() {
                 >
                   Reports
                 </TabsTrigger>
+                <TabsTrigger 
+                  value="analytics" 
+                  className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:bg-transparent rounded-none px-6 py-4"
+                >
+                  Analytics
+                </TabsTrigger>
+                <TabsTrigger 
+                  value="optimizer" 
+                  className="data-[state=active]:border-b-2 data-[state=active]:border-primary data-[state=active]:bg-transparent rounded-none px-6 py-4"
+                >
+                  Cost Optimizer
+                </TabsTrigger>
               </TabsList>
             </div>
 
@@ -162,6 +176,41 @@ export default function Dashboard() {
 
             <TabsContent value="reports" className="p-6">
               <Reports userRole={userRole} />
+            </TabsContent>
+
+            <TabsContent value="analytics" className="p-6">
+              <AdvancedAnalytics userRole={userRole} />
+            </TabsContent>
+
+            <TabsContent value="optimizer" className="p-6">
+              <CostOptimizer 
+                currentResults={estimates.length > 0 && estimates[0].calculationResults ? estimates[0].calculationResults as any : {
+                  rawMaterialsCost: 0,
+                  transportCost: 0,
+                  packingCost: 0,
+                  fumigationCost: 0,
+                  customsClearanceCost: 0,
+                  otherCosts: 0,
+                  totalProcurementCost: 0,
+                  marginAmount: 0,
+                  exportDutyAmount: 0,
+                  invoiceValue: 0,
+                  freightCost: 0,
+                  importDutyCost: 0,
+                  destinationCustomsClearance: 0,
+                  destinationTransport: 0,
+                  otherLogisticsCosts: 0,
+                  totalLogisticsCost: 0,
+                  importerTotalCost: 0,
+                  distributorPrice: 0,
+                  retailerPrice: 0,
+                  totalMarginPercentage: 0,
+                  productBreakdown: []
+                }}
+                onOptimize={(recommendations) => {
+                  console.log('Optimization recommendations:', recommendations);
+                }}
+              />
             </TabsContent>
           </Tabs>
         </Card>

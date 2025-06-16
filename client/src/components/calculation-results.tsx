@@ -191,14 +191,11 @@ export default function CalculationResults({ results, onSave, isSaving, containe
           Last calculated: {new Date().toLocaleString()}
         </div>
         <div className="flex space-x-3">
-          <Button variant="outline" onClick={exportToPDF}>
-            <FileDown className="mr-2" size={16} />
-            Export PDF
-          </Button>
-          <Button variant="outline" onClick={exportToExcel}>
-            <FileDown className="mr-2" size={16} />
-            Export Excel
-          </Button>
+          <ExportFunctionality 
+            results={results} 
+            containerId={containerId} 
+            destination={destination} 
+          />
           <Button onClick={onSave} disabled={isSaving}>
             <Save className="mr-2" size={16} />
             {isSaving ? "Saving..." : "Save Estimate"}

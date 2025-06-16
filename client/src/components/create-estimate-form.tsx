@@ -638,6 +638,8 @@ export default function CreateEstimateForm({ userRole }: CreateEstimateFormProps
           results={calculationResults} 
           onSave={() => saveEstimate("completed")}
           isSaving={createEstimateMutation.isPending}
+          containerId={form.getValues("containerId")}
+          destination={form.getValues("destination")}
         />
       )}
     </div>

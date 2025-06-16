@@ -33,7 +33,7 @@ export const estimates = pgTable("estimates", {
   retailerMargin: decimal("retailer_margin", { precision: 5, scale: 2 }).notNull().default("20"),
   
   // Calculated results (stored for performance)
-  calculationResults: jsonb("calculation_results"), // Store calculated breakdown
+  calculationResults: jsonb("calculation_results").default(null), // Store calculated breakdown
   
   createdBy: text("created_by").notNull(),
   userRole: text("user_role").notNull(), // admin, ops_analyst
