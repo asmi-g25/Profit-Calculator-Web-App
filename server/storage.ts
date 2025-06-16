@@ -39,6 +39,7 @@ export class MemStorage implements IStorage {
     const estimate: Estimate = { 
       ...insertEstimate, 
       id,
+      status: insertEstimate.status || "draft",
       transportCost: insertEstimate.transportCost || "0",
       packingCost: insertEstimate.packingCost || "0",
       fumigationCost: insertEstimate.fumigationCost || "0",

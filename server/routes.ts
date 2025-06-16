@@ -134,6 +134,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         ...estimateData,
         containerId: `${estimateData.containerId}-COPY`,
         status: "draft",
+        products: estimateData.products as any,
       });
 
       res.status(201).json(duplicated);

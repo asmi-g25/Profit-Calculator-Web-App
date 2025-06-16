@@ -1,30 +1,20 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { FileDown, Save } from "lucide-react";
+import { Save } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
+import ExportFunctionality from "./export-functionality";
+import type { CalculationResults } from "@shared/schema";
 
 interface CalculationResultsProps {
-  results: any;
+  results: CalculationResults;
   onSave: () => void;
   isSaving: boolean;
+  containerId?: string;
+  destination?: string;
 }
 
-export default function CalculationResults({ results, onSave, isSaving }: CalculationResultsProps) {
+export default function CalculationResults({ results, onSave, isSaving, containerId = "Unknown", destination = "Unknown" }: CalculationResultsProps) {
   const { toast } = useToast();
-
-  const exportToPDF = () => {
-    toast({
-      title: "Export to PDF",
-      description: "PDF export functionality would be implemented here",
-    });
-  };
-
-  const exportToExcel = () => {
-    toast({
-      title: "Export to Excel", 
-      description: "Excel export functionality would be implemented here",
-    });
-  };
 
   return (
     <div className="space-y-6 border-t border-gray-200 pt-8">
